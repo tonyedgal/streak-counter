@@ -4,7 +4,7 @@ interface Streak {
   lastLoginDate: string;
 }
 
-export function streakCounter(storage: Storage, dae: Date): Streak {
+export function streakCounter(storage: Storage, date: Date): Streak {
   return {
     currentCount: 0,
     startDate: "12/1/2021",
