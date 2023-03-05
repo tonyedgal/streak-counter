@@ -1,3 +1,5 @@
+import { streakCounter } from "../src/index";
+
 describe("streakCounter", () => {
   it(" should return a streak object with currentCount, startDate and lastLoginDate", () => {
     const mockLocalStorage = "";
