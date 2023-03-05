@@ -1,8 +1,16 @@
+import { JSDOM } from "jsdom";
 import { streakCounter } from "../src/index";
 
 describe("streakCounter", () => {
-  it(" should return a streak object with currentCount, startDate and lastLoginDate", () => {
-    const mockLocalStorage = "";
+  let mockLocalStorage: Storage;
+
+  beforeEach(() => {
+    const mockJSDom = new JSDOM("", { url: "http://localhost" });
+
+    mockLocalStorage = mockJSDom.window.localStorage;
+  });
+
+  it("should return a streak object with currentCount, startDate and lastLoginDate", () => {
     const date = new Date();
     const streak = streakCounter(mockLocalStorage, date);
 
