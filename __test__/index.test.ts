@@ -90,4 +90,12 @@ describe("with a pre-populated streak", () => {
 
     expect(streak.currentCount).toBe(2);
   });
+
+  it("should not increase when login days are not consecutive", () => {
+    // it should not increment because this is two days after
+    const date = new Date("12/14/2021");
+    const streak = streakCounter(mockLocalStorage, date);
+
+    expect(streak.currentCount).toBe(1);
+  });
 });
