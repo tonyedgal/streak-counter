@@ -81,4 +81,13 @@ describe("with a pre-populated streak", () => {
     // should match the dates used to set up the test
     expect(streak.startDate).toBe("12/12/2021");
   });
+
+  it("should increment the streak", () => {
+    // it should increment streak, because it is the day after
+    // the streak started and a streak is days in a row
+    const date = new Date("12/13/2021");
+    const streak = streakCounter(mockLocalStorage, date);
+
+    expect(streak.currentCount).toBe(2);
+  });
 });
