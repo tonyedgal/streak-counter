@@ -19,10 +19,19 @@ export function differenceInDays(dateLeft: Date, dateRight: Date): number {
 function shouldIncrementOrResetStreakCount(
   currentDate: Date,
   lastLoginDate: string
-): "increment" | "reset" {
+): "increment" | "reset" | "none" {
   // we get 11/5/2021
   // so to get 5, we use oue helper function
-  const difference = differenceInDays(currentDate, new Date(lastLoginDate));
+  const difference = differenceInDays(
+    currentDate,
+    new Date(lastLoginDate.split("/")[1])
+  );
+
+  // Same-day login, do nothing
+  if (difference === 0) {
+    return "none";
+  }
+
   // this means they logged in the day after the currentDate
   if (difference === 1) {
     return "increment";
